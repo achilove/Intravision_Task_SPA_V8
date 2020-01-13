@@ -7,6 +7,9 @@
     <div class="grid-item item2">
         <div [innerHtml]="task.description"></div>
         <br>
+        <label>Добавление комментариев</label>
+        <textarea ></textarea>
+        <bt>
         <button (click)="submitTask()">Сохранить</button>
     </div>
     <div class="grid-item item3">
@@ -38,12 +41,13 @@
         <label>Срок</label>
         <p>{{task.resolutionDatePlan | date: "dd.MM.y"}}</p>
         
-            <label>Тэги</label>
-            <p *ngFor="let tag of task.tags" class="tag" (click)="deleteTag(tag)">{{tag.name}}</p>
-            <p><a class="executorName" (click)="enableTags(); showTags = !showTags">Добавить тэги</a></p>
-            <div *ngIf="showTags">
-                <p *ngFor="let tag of tags" class="tag" (click)="addTag(tag)" >{{tag.name}}</p>
-            </div>
+        <label>Тэги</label>
+        <p *ngFor="let tag of task.tags" class="tag" (click)="deleteTag(tag)">{{tag.name}}</p>
+        <p><a class="executorName" (click)="enableTags(); showTags = !showTags">Добавить тэги</a></p>
+        <div *ngIf="showTags">
+            <p *ngFor="let tag of tags" class="tag" (click)="addTag(tag)" >{{tag.name}}</p>
+        </div>
+
     </div>  
   </div>
 
