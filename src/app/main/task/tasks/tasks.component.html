@@ -1,0 +1,23 @@
+<div class="grid-container">
+  <div class="item1">
+    <button (click)="createTask()">Создать заявку</button>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Статус</th>
+        <th>Исполнитель</th>
+      </tr>
+      <tr *ngFor="let task of tasks | async" (click)="editTask(task)">
+        <td>{{task.id}}</td>
+        <td>{{task.name}}</td>
+        <td><p class="status" [ngStyle]="{ 'background-color': task.statusRgb }">{{task.statusName}}</p></td>
+        <td>{{task.executorName}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="item2">
+    <app-edittask *ngIf="showEdit" [task]="selectedTask" [statuses]="statuses" [priorities]="priorities" (onEdit)="putTask($event)"></app-edittask>
+    <app-create-task *ngIf="showCreate" (onCreate)="postTask($event)"></app-create-task>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="sidenav">
+    <!-- <a class="active" href="#home">Home</a>
+    <a href="#news">База знаний</a>
+    <a routerLink = "/tasks">Заявки</a>
+    <a href="#about">Сотрудники</a>
+    <a href="#about">Клиенты</a>
+    <a href="#about">Активы</a>
+    <a href="#about">Настройки</a> -->
+    <div *ngFor="let route  of sideBarElems">
+        <a routerLink = "{{route.path}}">{{route.text}}</a>
+    </div>    
+</div>

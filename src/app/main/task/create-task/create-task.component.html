@@ -1,0 +1,19 @@
+<!-- <form *ngIf="taskForm" [formGroup]="taskForm" (submit)="submitTask();">
+    <textarea formControlName="name"></textarea>
+    <textarea formControlName="description"></textarea>
+    <button  type="submit">Сохранить</button>
+</form> -->
+
+<div class="grid-container">
+    <div class="grid-item item1">
+        <p>Новая заявка</p>
+    </div>
+    <div class="grid-item item2">
+        <form *ngIf="taskForm" [formGroup]="taskForm" (submit)="submitTask();">
+            <textarea formControlName="name"></textarea>
+            <textarea formControlName="description"></textarea>
+            <button  type="submit">Сохранить</button>
+        </form>
+    </div>
+    <div class="grid-item item3"></div>
+  </div>

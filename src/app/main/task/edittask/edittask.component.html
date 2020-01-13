@@ -1,0 +1,51 @@
+
+  <div class="grid-container">
+    <div class="grid-item item1">
+        № {{task.id}}
+        {{task.name}}
+    </div>
+    <div class="grid-item item2">
+        <div [innerHtml]="task.description"></div>
+        <br>
+        <button (click)="submitTask()">Сохранить</button>
+    </div>
+    <div class="grid-item item3">
+        <p><span class="dot" [ngStyle]="{ 'background-color': task.statusRgb }"></span><a class="statusName" (click)="showStatuses=!showStatuses;">{{task.statusName}}</a></p>
+        <div *ngIf="showStatuses" class="user">
+            <p *ngFor="let st of statuses" (click)="selectStatus(st)" class="executorName">
+                <span class="dot" [ngStyle]="{ 'background-color': st.rgb }"></span><a class="executorName">{{st.name}}</a>
+            </p>
+        </div>
+
+        <p>{{task.taskTypeName}}</p>
+        <label>Заявитель</label>
+        <p>{{task.initiatorName}}</p>
+
+        <label>Приоритет</label>
+        <p><a class="executorName" (click)="showPriorities=!showPriorities;" >{{task.priorityName}}</a></p>
+        <div *ngIf="showPriorities" class="user">
+            <p *ngFor="let pr of priorities" (click)="selectPriority(pr)" class="executorName">
+                <a class="executorName">{{pr.name}}</a>
+            </p>
+        </div>
+        <label>Исполнитель</label>
+        <p><a class="executorName" (click)="showUsers=!showUsers;">{{task.executorName}}</a></p>
+        <div *ngIf="showUsers" class="user">
+            <p *ngFor="let user of users" (click)="selectExecutor(user)" class="executorName"><a class="executorName">{{user.name}}</a></p>
+        </div>
+
+
+        <label>Срок</label>
+        <p>{{task.resolutionDatePlan | date: "dd.MM.y"}}</p>
+        
+            <label>Тэги</label>
+            <p *ngFor="let tag of task.tags" class="tag" (click)="deleteTag(tag)">{{tag.name}}</p>
+            <p><a class="executorName" (click)="enableTags(); showTags = !showTags">Добавить тэги</a></p>
+            <div *ngIf="showTags">
+                <p *ngFor="let tag of tags" class="tag" (click)="addTag(tag)" >{{tag.name}}</p>
+            </div>
+    </div>  
+  </div>
+
+
+

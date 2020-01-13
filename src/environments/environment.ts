@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: '/api',
+  apiBase: 'http://intravision-task.test01.intravision.ru',
+  guid: "481eb5d1-f227-4e1d-b28e-19660edfeb38",
+  tasks: '/Tasks',
+  taskTypes: '/TaskTypes',
+  getTasks: '/odata/tasks',
+  users:'/Users',
+  priorities: '/Priorities',
+  statuses: '/Statuses',
+  tags:'/Tags'
 };
 
 /*
