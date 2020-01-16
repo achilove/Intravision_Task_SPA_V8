@@ -9,22 +9,22 @@ export class SidebarComponent implements OnInit {
 
   sideBarElems = [
     {
-      path: 'knowledge', text: "База знаний"
+      path: 'knowledge', text: "База знаний", icon: 'fa fa-book'
     },
     {
-      path: 'tasks', text: "Заявки"
+      path: 'tasks', text: "Заявки", icon: 'fa fa-file-text-o'
     },
     {
-      path: 'employees', text: "Сотрудники"
+      path: 'employees', text: "Сотрудники", icon: 'fa fa-users'
     },
     {
-      path: 'customers', text: "Клиенты"
+      path: 'customers', text: "Клиенты", icon: 'fa fa-building-o'
     },
     {
-      path: 'actives', text: "Активы"
+      path: 'actives', text: "Активы", icon: 'fa fa-desktop'
     },
     {
-      path: 'options', text: "Настройки"
+      path: 'options', text: "Настройки", icon: 'fa fa-cog' 
     },
   ]
 

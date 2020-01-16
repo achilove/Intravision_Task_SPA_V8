@@ -1,34 +1,8 @@
-.item1 {
-    grid-area: myArea;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-areas: 'myArea myArea';
-    grid-gap: 10px;
-    background-color: #2196F3;
-    padding: 10px;
-  }
-  
-  .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    // font-size: 30px;
-  }
 
   label {
       font-size: 10px;
   }
 
-  p.tag {
-    background-color:white;
-    color: grey;
-    border-radius: 25px;
-    padding: 1px 2px;
-    border: solid;
-    border-width: thin;
-  }
 
   a.executorName{
     color: #8ab8e6;

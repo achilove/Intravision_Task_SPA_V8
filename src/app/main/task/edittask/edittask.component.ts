@@ -1,16 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { TaskService } from '../task.service';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors } from "@angular/forms";
 
 @Component({
   selector: 'app-edittask',
   templateUrl: './edittask.component.html',
   styleUrls: ['./edittask.component.scss']
 })
-export class EdittaskComponent implements OnInit {
+export class EdittaskComponent implements AfterViewInit {
   @Input() task: any
   @Input() statuses: any[]
   @Input() priorities: any
   @Output() onEdit = new EventEmitter()
+  @Output() onClose = new EventEmitter()
 
   users: User[]
   showUsers:boolean = false
@@ -18,11 +20,28 @@ export class EdittaskComponent implements OnInit {
   showStatuses:boolean = false
   showTags:boolean = false
   tags: any[] = []
+  taskForm: FormGroup;
+  comment
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private fb: FormBuilder,
   ) { }
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getUsers()
+
+    this.taskForm = this.fb.group({
+      comment: ['', [Validators.minLength(3)]],
+    })
+
+    this.taskForm.get('comment').valueChanges.subscribe(comment =>{
+        this.comment = comment
+    })
+  }
+
+  setChild({task, statuses, priorities}){
+    this.task = task
+    this.statuses = statuses
+    this.priorities = priorities
   }
 
   getUsers(){
@@ -52,8 +71,19 @@ export class EdittaskComponent implements OnInit {
 
   submitTask(){
     if(this.task){
+      if(this.comment){
+        if(this.task['lifetimeItems'] && Array.isArray(this.task['lifetimeItems'])){
+          this.task['lifetimeItems'].push({comment: this.comment})
+        }else{
+          this.task['lifetimeItems'] = [{comment: this.comment}]
+        }
+      }
       this.onEdit.emit(this.task)
     }
+  }
+
+  close(){
+    this.onClose.emit(true)
   }
 
   addTag(tag){

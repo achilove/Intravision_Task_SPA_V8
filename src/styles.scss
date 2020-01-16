@@ -1,38 +1,19 @@
 // body {
 //     font-family: "Lato", sans-serif;
 //   }
-  
-  .sidenav {
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #002137;
-    overflow-x: hidden;
-    padding-top: 20px;
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";  
+@import "../node_modules/bootstrap/scss/bootstrap.scss";  
+
+
+  button.btn .save{
+    border-radius: 25px;
+    padding: 3px 25px 3px 25px;
   }
-  
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    // font-size: 25px;
-    color: #818181;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    // font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    // .sidenav a {font-size: 18px;}
-  }
+
+
+
+body{
+    color: #000;
+}
+

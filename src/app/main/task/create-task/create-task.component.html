@@ -1,19 +1,43 @@
-<!-- <form *ngIf="taskForm" [formGroup]="taskForm" (submit)="submitTask();">
-    <textarea formControlName="name"></textarea>
-    <textarea formControlName="description"></textarea>
-    <button  type="submit">Сохранить</button>
-</form> -->
-
-<div class="grid-container">
+<!-- <div class="grid-container">
     <div class="grid-item item1">
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
         <p>Новая заявка</p>
     </div>
     <div class="grid-item item2">
         <form *ngIf="taskForm" [formGroup]="taskForm" (submit)="submitTask();">
+            <label>Название</label>
+            <br>
             <textarea formControlName="name"></textarea>
+            <br>
+            <label>Описание</label>
+            <br>
             <textarea formControlName="description"></textarea>
-            <button  type="submit">Сохранить</button>
+            <br>
+            <button class="btn btn-primary btn-sm" type="submit">Сохранить</button>
         </form>
     </div>
     <div class="grid-item item3"></div>
-  </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <p>Новая заявка</p>
+    </div>
+    <div class="row">
+        <form *ngIf="taskForm" [formGroup]="taskForm" (submit)="submitTask();">
+            <label>Название</label>
+            <br>
+            <textarea formControlName="name"></textarea>
+            <br>
+            <label>Описание</label>
+            <br>
+            <textarea formControlName="description"></textarea>
+            <br>
+            <button class="btn btn-primary btn-sm save" type="submit">Сохранить</button>
+        </form>
+    </div>
+</div>

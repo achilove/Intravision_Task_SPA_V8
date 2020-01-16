@@ -11,8 +11,7 @@ import { OptionsComponent } from './main/options/options.component';
 import { EmployeesComponent } from './main/employees/employees.component';
 import { KnowledgebaseComponent } from './main/knowledgebase/knowledgebase.component';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     KnowledgebaseComponent,
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     TaskModule,

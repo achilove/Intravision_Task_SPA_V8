@@ -1,23 +1,63 @@
-<div class="grid-container">
+<!-- <div class="grid-container">
   <div class="item1">
-    <button (click)="createTask()">Создать заявку</button>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Статус</th>
-        <th>Исполнитель</th>
-      </tr>
-      <tr *ngFor="let task of tasks | async" (click)="editTask(task)">
-        <td>{{task.id}}</td>
-        <td>{{task.name}}</td>
-        <td><p class="status" [ngStyle]="{ 'background-color': task.statusRgb }">{{task.statusName}}</p></td>
-        <td>{{task.executorName}}</td>
-      </tr>
+    <button class="btn btn-primary btn-sm" (click)="createTask()">Создать заявку</button>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Название</th>
+          <th *ngIf="!(showCreate || showEdit)" scope="col">Статус</th>
+          <th *ngIf="!(showCreate || showEdit)" scope="col">Исполнитель</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks | async" (click)="editTask(task)">
+          <td>{{task.id}}</td>
+          <td>{{task.name}}</td>
+          <td *ngIf="!(showCreate || showEdit)">
+            <span class="badge badge-pill badge-secondary" [ngStyle]="{ 'background-color': task.statusRgb }">{{task.statusName}}</span>
+          </td>
+          <td *ngIf="!(showCreate || showEdit)">{{task.executorName}}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
   <div class="item2">
-    <app-edittask *ngIf="showEdit" [task]="selectedTask" [statuses]="statuses" [priorities]="priorities" (onEdit)="putTask($event)"></app-edittask>
-    <app-create-task *ngIf="showCreate" (onCreate)="postTask($event)"></app-create-task>
+    <app-edittask *ngIf="showEdit" [task]="selectedTask" [statuses]="statuses" [priorities]="priorities" (onEdit)="putTask($event)" (onClose)="closeChild($event)"></app-edittask>
+    <app-create-task *ngIf="showCreate" (onCreate)="postTask($event)" (onClose)="closeChild($event)"></app-create-task>
+  </div>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary btn-sm save" (click)="createTask()">Создать заявку</button>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название</th>
+            <th *ngIf="!(showCreate || showEdit)" scope="col">Статус</th>
+            <th *ngIf="!(showCreate || showEdit)" scope="col">Исполнитель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks | async" (click)="editTask(task)">
+            <td>{{task.id}}</td>
+            <td>{{task.name}}</td>
+            <td *ngIf="!(showCreate || showEdit)">
+              <span class="badge badge-pill badge-secondary" [ngStyle]="{ 'background-color': task.statusRgb }">{{task.statusName}}</span>
+            </td>
+            <td *ngIf="!(showCreate || showEdit)">{{task.executorName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col" *ngIf="showEdit || showCreate">
+      <app-edittask *ngIf="showEdit" [task]="selectedTask" [statuses]="statuses" [priorities]="priorities" (onEdit)="putTask($event)" (onClose)="closeChild($event)"></app-edittask>
+      <app-create-task *ngIf="showCreate" (onCreate)="postTask($event)" (onClose)="closeChild($event)"></app-create-task>
+    </div>
   </div>
 </div>

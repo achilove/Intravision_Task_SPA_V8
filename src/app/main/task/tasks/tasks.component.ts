@@ -2,15 +2,18 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Observable } from 'rxjs';
 import { EdittaskComponent } from '../edittask/edittask.component';
+import { CreateTaskComponent } from '../create-task/create-task.component';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.scss']
 })
-export class TasksComponent implements OnInit, AfterViewInit {
-  // @ViewChild(EdittaskComponent, {static:true})
-  // private editTaskComponent: EdittaskComponent;
+export class TasksComponent implements OnInit {
+  @ViewChild(EdittaskComponent, {static:true})
+  @ViewChild(CreateTaskComponent, {static:true})
+  private editTaskComponent: EdittaskComponent
+  private createTaskComponent: CreateTaskComponent
   tasks: Observable<any[]>
   showEdit: boolean = false
   showCreate: boolean = false
@@ -25,9 +28,6 @@ export class TasksComponent implements OnInit, AfterViewInit {
     this.getHelpers()
   }
 
-  ngAfterViewInit(){
-
-  }
 
   getHelpers(){
     this.taskService.getStatuses().subscribe(statuses => this.statuses = statuses)
@@ -39,9 +39,10 @@ export class TasksComponent implements OnInit, AfterViewInit {
   }
 
   editTask(task){
-    this.selectedTask = task
+    this.selectedTask = Object.assign({}, task)
     this.showEdit = true
     this.showCreate = false
+    // this.editTaskComponent.setChild({task, statuses: this.statuses, priorities: this.priorities})
   }
 
   createTask(){
@@ -67,5 +68,12 @@ export class TasksComponent implements OnInit, AfterViewInit {
       this.showEdit = false
       this.getAllTasks()
     })
+  }
+
+  closeChild(event){
+    if(event){
+      this.showCreate = false
+      this.showEdit = false
+    }
   }
 }

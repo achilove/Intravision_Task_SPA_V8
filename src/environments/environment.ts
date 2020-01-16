@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   api: '/api',
   apiBase: 'http://intravision-task.test01.intravision.ru',
-  guid: "481eb5d1-f227-4e1d-b28e-19660edfeb38",
+  guid: "2ab282c6-1a22-42c0-a983-fda6ddb52e28",
   tasks: '/Tasks',
   taskTypes: '/TaskTypes',
   getTasks: '/odata/tasks',

@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors } fro
 export class CreateTaskComponent implements OnInit {
   taskForm: FormGroup;
   @Output() onCreate = new EventEmitter()
+  @Output() onClose = new EventEmitter()
+
   constructor(
     private fb: FormBuilder,
   ) { }
@@ -28,6 +30,10 @@ export class CreateTaskComponent implements OnInit {
     if(this.taskForm.valid){
       this.onCreate.emit(this.taskForm.value)
     }
+  }
+
+  close(){
+    this.onClose.emit(true)
   }
 
 }
